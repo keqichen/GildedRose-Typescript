@@ -94,7 +94,7 @@ describe('Gilded Rose', function () {
         expect(items[0].quality).to.equal(0);
     });
 
-    //testing functions for Sulfuras
+    //3.testing functions for Sulfuras
     it('should be same sellIn and quality for Sulfuras', function () {
         const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', -1, 20),new Item('Sulfuras, Hand of Ragnaros', 15, 80),new Item('Sulfuras, Hand of Ragnaros', 3, 32)]);
         const items = gildedRose.updateQuality();
@@ -105,5 +105,25 @@ describe('Gilded Rose', function () {
         expect(items[2].sellIn).to.equal(3)
         expect(items[2].quality).to.equal(32);
     });
-    
+
+    //4. testing functions for Conjured Mana Cake:
+    it('should decrease sellIn by 1 for Conjured Mana Cake', function () {
+        const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 5, 20), new Item('Conjured Mana Cake', 0, 10)]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].sellIn).to.equal(4);
+        expect(items[1].sellIn).to.equal(-1);
+    });
+
+    it('should decrease quality by 2 if sellIn >= 0 and quality > 1 for Conjured Mana Cake', function () {
+        const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 3, 23), new Item('Potato', 1, 0)]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(21);
+        expect(items[1].quality).to.equal(0);
+    });
+
+    it('should decrease quality by 4 if sellIn < 0 but quality > 3 for Conjured Mana Cake', function () {
+        const gildedRose = new GildedRose([new Item('Conjured Mana Cake', -2, 5)]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(1);
+    });
 });

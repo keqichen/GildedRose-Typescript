@@ -70,10 +70,10 @@ export class GildedRose {
     updateQualityConjured(i){
         this.items[i].sellIn --;
 
-        if (this.items[i].sellIn >= 0 && this.items[i].quality > 0) {
+        if (this.items[i].sellIn >= 0 && this.items[i].quality > 1) {
             this.items[i].quality = this.items[i].quality - 2
         }
-        if (this.items[i].sellIn < 0 && this.items[i].quality > 1) {
+        if (this.items[i].sellIn < 0 && this.items[i].quality > 3) {
             this.items[i].quality = this.items[i].quality - 4
         }
     }
