@@ -4,14 +4,14 @@ import { Item, GildedRose } from '../app/gilded-rose';
 
 //Create a list of item
 
-const item1 = new Item("Aged Brie", 10, 50)
-const item2 = new Item("Aged Brie", 20, 20)
-const item3 = new Item("Aged Brie", 19, 60)
-const item4 = new Item("Aged Brie", 3, 23)
-const item5 = new Item("Aged Brie", 5, 11)
-const item6 = new Item("Aged Brie", 80, 46)
-const item7 = new Item("Aged Brie", 12, 23)
-const item8 = new Item("Aged Brie", 1, 25)
+const item1 = new Item("Aged Brie1", 10, 50)
+const item2 = new Item("Aged Brie2", 20, 20)
+const item3 = new Item("Aged Brie3", 19, 60)
+const item4 = new Item("Aged Brie4", 3, 23)
+const item5 = new Item("Aged Brie5", 5, 11)
+const item6 = new Item("Aged Brie6", 80, 46)
+const item7 = new Item("Aged Brie7", 12, 23)
+const item8 = new Item("Aged Brie8", 1, 1)
 
 const bStage1 = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50)
 const bStage2 = new Item("Backstage passes to a TAFKAL80ETC concert", 20, 20)
@@ -33,11 +33,11 @@ const s8 = new Item("Sulfuras, Hand of Ragnaros", 1, 25)
 
 let G1 = new GildedRose([item1, item2, item3, item4, item5, item6, item7, item8])
 G1.updateQuality()
-//console.log(G1);
+console.log(G1);
 G1.updateQuality()
-//console.log(G1);
+console.log(G1);
 G1.updateQuality()
-//console.log(G1);
+console.log(G1);
 
 const G2 = new GildedRose([bStage1, bStage2, bStage3, bStage4, bStage5, bStage7, bStage8, bStage9])
 G2.updateQuality()
@@ -49,12 +49,12 @@ G2.updateQuality()
 
 
 const G3 = new GildedRose([s1, s2, s3, s4, s5, s6, s7, s8])
-G3.updateQuality()
-console.log(G3)
+// G3.updateQuality()
+// console.log(G3)
 
-G3.updateQuality()
-console.log(G3)
+// G3.updateQuality()
+// console.log(G3)
 
-G3.updateQuality()
-console.log(G3)
+// G3.updateQuality()
+// console.log(G3)
 
