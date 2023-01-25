@@ -11,13 +11,20 @@ describe('Gilded Rose', function () {
         expect(items[1].sellIn).to.equal(-1);
     });
 
-    it('should decrease quality by 1 till it reaches 0 for Normal Items', function () {
+    it('should decrease quality by 1 if sellIn >= 0 and quality > 0 for Normal Items', function () {
         const gildedRose = new GildedRose([new Item('foo', 3, 23), new Item('Potato', 1, 0)]);
         const items = gildedRose.updateQuality();
         expect(items[0].quality).to.equal(22);
         expect(items[1].quality).to.equal(0);
     });
 
+    it('should decrease quality by 2 if sellIn < 0 but quality > 1 for Normal Items', function () {
+        const gildedRose = new GildedRose([new Item('foo', -2, 2)]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(0);
+    });
+
+  
     //testing functions for special cases
     //1.special case Aged Brie:
     it('should decrease sellIn by 1 for Aged Brie', function () {
@@ -27,18 +34,24 @@ describe('Gilded Rose', function () {
         expect(items[1].sellIn).to.equal(-1);
     });
 
-    it('should increase quality by 1 if quality is less than 50 for Aged Brie', function () {
+    it('should increase quality by 1 if quality < 50 for Aged Brie', function () {
         const gildedRose = new GildedRose([new Item('Aged Brie', 10, 49)]);
         const items = gildedRose.updateQuality();
         expect(items[0].quality).to.equal(50);
     });
 
 
-    it('should remain same if quality is greater than or equal to 50 for Aged Brie', function () {
+    it('should remain same if quality >= 50 for Aged Brie', function () {
         const gildedRose = new GildedRose([new Item('Aged Brie', 10, 50), new Item('Aged Brie', 10, 68)]);
         const items = gildedRose.updateQuality();
         expect(items[0].quality).to.equal(50);
         expect(items[1].quality).to.equal(68);
+    });
+
+    it('should increase quality by 2 if sellIn < 0 for Aged Brie', function () {
+        const gildedRose = new GildedRose([new Item('Aged Brie', -2, 40)]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(42);
     });
 
     //2.testing functions for BackStage passes:
