@@ -10,8 +10,6 @@ export class Item {
     }
 }
 
-// Next step: improve codes within each functions for different types;
-
 export class GildedRose {
     items: Array<Item>;
 
@@ -22,7 +20,7 @@ export class GildedRose {
     //function to check quality
     checkQualityBelowFifty(i) {
         if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
+            this.items[i].quality++;
         }
     }
 
@@ -31,7 +29,7 @@ export class GildedRose {
         this.items[i].sellIn --;
 
         if (this.items[i].sellIn >= 0 && this.items[i].quality > 0) {
-            this.items[i].quality = this.items[i].quality - 1
+            this.items[i].quality--;
         }
         if (this.items[i].sellIn < 0 && this.items[i].quality > 1) {
             this.items[i].quality = this.items[i].quality - 2
@@ -39,18 +37,20 @@ export class GildedRose {
     }
 
     updateQualityAgedBrie(i) {
-        this.items[i].sellIn --;
+        this.items[i].sellIn--;
 
-        this.checkQualityBelowFifty(i)
+        this.checkQualityBelowFifty(i);
+
         if (this.items[i].sellIn < 0) {
             this.checkQualityBelowFifty(i)
         }
     }
 
     updateQualityBackstage(i) {
-        this.items[i].sellIn --;
+        this.items[i].sellIn--;
 
-        this.checkQualityBelowFifty(i)
+        this.checkQualityBelowFifty(i);
+
         if (this.items[i].sellIn < 11) {
             this.checkQualityBelowFifty(i)
         }
@@ -63,8 +63,8 @@ export class GildedRose {
     }
 
     updateQualitySulfuras(i) {
-        this.items[i].quality = this.items[i].quality
-        this.items[i].sellIn = this.items[i].sellIn
+        this.items[i].quality = this.items[i].quality;
+        this.items[i].sellIn = this.items[i].sellIn;
     }
 
     updateQualityConjured(i){
